@@ -1,0 +1,10 @@
+{
+  "name": "git-graph-handler",
+  "version": "0.1.0",
+  "description": "Handle multiple issue linking from Git Graph extension for vscode",
+  "author": "Aryel Mota Gois",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1"
+  }
+}
