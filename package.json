@@ -5,6 +5,10 @@
   "author": "Aryel Mota Gois",
   "license": "MIT",
   "scripts": {
+    "check": "tsc --noEmit",
     "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
   }
 }
