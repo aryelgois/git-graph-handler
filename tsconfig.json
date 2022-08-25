@@ -5,6 +5,10 @@
 
     /* Modules */
     "module": "commonjs",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
 
     /* Interop Constraints */
     "esModuleInterop": true,
