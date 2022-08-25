@@ -21,5 +21,6 @@
 
     /* Completeness */
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["dist"]
 }
