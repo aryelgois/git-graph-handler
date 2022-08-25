@@ -1,5 +1,8 @@
 {
   "root": true,
+  "env": {
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": ["import", "promise", "@typescript-eslint"],
   "extends": [
