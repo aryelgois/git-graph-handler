@@ -5,6 +5,7 @@
   "author": "Aryel Mota Gois",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint src",
     "check": "tsc --noEmit",
     "test": "echo 'Error: no test specified' && exit 1",
     "dev": "npm run build -- --watch & npm start -- -C",
@@ -12,6 +13,7 @@
     "start": "nodemon --watch dist dist/index.js"
   },
   "devDependencies": {
+    "eslint": "^8.22.0",
     "nodemon": "^2.0.19",
     "tsup": "^6.2.2",
     "typescript": "^4.7.4"
