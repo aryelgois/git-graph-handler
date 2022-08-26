@@ -1,0 +1,40 @@
+import { replacerConfigJTD } from './ReplacerConfig'
+import { replacerEntryJTD } from './ReplacerEntry'
+
+jest.mock('./ReplacerEntry')
+
+const mockedEntryParser = jest.mocked(replacerEntryJTD.parse)
+
+describe('replacerConfigJTD', () => {
+  describe('parse()', () => {
+    const { parse } = replacerConfigJTD
+
+    it('throws when the array is empty', () => {
+      expect(() => parse([])).toThrowError(/entries$/u)
+    })
+
+    it('throws when an entry is invalid', () => {
+      const message = 'from replacerEntryJTD.parse()'
+
+      mockedEntryParser.mockImplementationOnce(() => {
+        throw new Error(message)
+      })
+
+      expect(() => parse([{ in: '', to: '' }])).toThrowError(message)
+    })
+
+    it('creates an array of ReplacerEntry items', () => {
+      parse([
+        { in: 'a', to: 'A' },
+        { in: 'b', to: 'B' },
+        { in: 'c', to: 'C' },
+      ])
+
+      expect(mockedEntryParser.mock.calls).toEqual([
+        [{ in: 'a', to: 'A' }],
+        [{ in: 'b', to: 'B' }],
+        [{ in: 'c', to: 'C' }],
+      ])
+    })
+  })
+})
