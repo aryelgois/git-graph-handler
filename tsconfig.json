@@ -9,7 +9,7 @@
     "paths": {
       "~/*": ["./*"]
     },
-    "types": ["@types/node"],
+    "types": ["@types/node", "@types/jest"],
 
     /* Interop Constraints */
     "esModuleInterop": true,
