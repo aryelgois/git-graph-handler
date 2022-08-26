@@ -8,7 +8,7 @@
     "fmt": "prettier --write src",
     "lint": "eslint src",
     "check": "tsc --noEmit",
-    "test": "echo 'Error: no test specified' && exit 1",
+    "test": "jest",
     "dev": "npm run build -- --watch & npm start -- -C",
     "build": "tsup src/index.ts",
     "start": "nodemon --watch dist dist/index.js"
@@ -28,6 +28,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
+    "jest": "^29.0.0",
     "nodemon": "^2.0.19",
     "prettier": "^2.7.1",
     "tsup": "^6.2.2",
