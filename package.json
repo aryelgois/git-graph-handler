@@ -9,7 +9,7 @@
     "lint": "eslint src",
     "check": "tsc --noEmit",
     "test": "jest",
-    "dev": "npm run build -- --watch & npm start -- -C",
+    "dev": "install -d dist && npm run build -- --watch & npm start -- -C",
     "build": "tsup src/index.ts",
     "start": "nodemon --watch dist dist/index.js"
   },
