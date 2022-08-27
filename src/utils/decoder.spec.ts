@@ -9,6 +9,17 @@ describe('decodeBase64()', () => {
       ['XmRlY29kZSBCYXNlXGQr', '^decode Base\\d+'],
       ['IShcZCsp', '!(\\d+)'],
       ['XHcrLVxkKw==', '\\w+-\\d+'],
+
+      /**
+       * The string representation for backslashes can go wild
+       */
+      [
+        // actual: {"word":"\\b(\\w+)\\b"}
+        // base64:
+        'eyJ3b3JkIjoiXFxiKFxcdyspXFxiIn0=',
+        // in JS/TS:
+        '{"word":"\\\\b(\\\\w+)\\\\b"}',
+      ],
     ]
 
     expect.assertions(samples.length)
