@@ -24,17 +24,31 @@ describe('replacerConfigRecordJTD', () => {
     })
 
     it('creates an array of ReplacerEntry items', () => {
-      parse([
+      const input = [
         { in: 'a', to: 'A' },
         { in: 'b', to: 'B' },
         { in: 'c', to: 'C' },
-      ])
+      ]
+
+      const output = [
+        { pattern: /a/u, replacement: 'A' },
+        { pattern: /b/u, replacement: 'B' },
+        { pattern: /c/u, replacement: 'C' },
+      ]
+
+      for (const i of output) {
+        mockedEntryParser.mockReturnValueOnce(i)
+      }
+
+      const result = parse(input)
 
       expect(mockedEntryParser.mock.calls).toEqual([
         [{ in: 'a', to: 'A' }],
         [{ in: 'b', to: 'B' }],
         [{ in: 'c', to: 'C' }],
       ])
+
+      expect(result).toEqual(output)
     })
   })
 })
