@@ -11,6 +11,7 @@ describe('replacerConfigRecordJTD', () => {
 
     it('throws when the array is empty', () => {
       expect(() => parse([])).toThrowError(/Missing.+entries$/u)
+      expect(mockedEntryParser).not.toBeCalled()
     })
 
     it('throws when an entry is invalid', () => {
