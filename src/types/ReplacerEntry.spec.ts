@@ -22,6 +22,10 @@ describe('replacerEntryRecordJTD', () => {
       expect(() => parse({ in: 'x', to: '' })).toThrowError(/"to"/u)
     })
 
+    it('throws when "in" is an invalid regex', () => {
+      expect(() => parse({ in: '[', to: ']' })).toThrow(SyntaxError)
+    })
+
     it('creates a simple replacer', () => {
       run('foo', /foo/u, 'bar')
     })
