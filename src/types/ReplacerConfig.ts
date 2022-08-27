@@ -1,3 +1,5 @@
+import assert from 'assert'
+
 import {
   replacerEntryRecordJTD,
   ReplacerEntry,
@@ -19,9 +21,7 @@ export const replacerConfigRecordJTD: JTDSchemaOptions<
   },
 
   parse(data) {
-    if (!data.length) {
-      throw new Error('Missing replacer entries')
-    }
+    assert(data.length, 'Missing replacer entries')
 
     return data.map((i) => replacerEntryRecordJTD.parse(i))
   },
