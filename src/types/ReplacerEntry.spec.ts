@@ -1,15 +1,15 @@
 import {
-  replacerEntryJTD,
-  EncodedReplacerEntry,
+  replacerEntryRecordJTD,
   ReplacerEntry,
+  ReplacerEntryRecord,
 } from './ReplacerEntry'
 
-describe('replacerEntryJTD', () => {
+describe('replacerEntryRecordJTD', () => {
   describe('parse()', () => {
-    const { parse } = replacerEntryJTD
+    const { parse } = replacerEntryRecordJTD
 
     const run = (input: string, output: RegExp, replacement = '$&') => {
-      const data: EncodedReplacerEntry = { in: input, to: replacement }
+      const data: ReplacerEntryRecord = { in: input, to: replacement }
       const result: ReplacerEntry = { pattern: output, replacement }
       expect(parse(data)).toEqual(result)
     }

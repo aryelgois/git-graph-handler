@@ -1,21 +1,21 @@
 import {
-  replacerEntryJTD,
-  EncodedReplacerEntry,
+  replacerEntryRecordJTD,
   ReplacerEntry,
+  ReplacerEntryRecord,
 } from './ReplacerEntry'
 
 import { JTDSchemaOptions } from './validation'
 
-export type EncodedReplacerConfig = EncodedReplacerEntry[]
+export type ReplacerConfigRecord = ReplacerEntryRecord[]
 
 export type ReplacerConfig = ReplacerEntry[]
 
-export const replacerConfigJTD: JTDSchemaOptions<
-  EncodedReplacerConfig,
+export const replacerConfigRecordJTD: JTDSchemaOptions<
+  ReplacerConfigRecord,
   ReplacerConfig
 > = {
   schema: {
-    elements: replacerEntryJTD.schema,
+    elements: replacerEntryRecordJTD.schema,
   },
 
   parse(data) {
@@ -23,6 +23,6 @@ export const replacerConfigJTD: JTDSchemaOptions<
       throw new Error('Missing replacer entries')
     }
 
-    return data.map((i) => replacerEntryJTD.parse(i))
+    return data.map((i) => replacerEntryRecordJTD.parse(i))
   },
 }

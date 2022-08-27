@@ -1,6 +1,6 @@
 import { JTDSchemaOptions } from './validation'
 
-export interface EncodedReplacerEntry {
+export interface ReplacerEntryRecord {
   in: string
   to: string
 }
@@ -10,8 +10,8 @@ export interface ReplacerEntry {
   replacement: string
 }
 
-export const replacerEntryJTD: JTDSchemaOptions<
-  EncodedReplacerEntry,
+export const replacerEntryRecordJTD: JTDSchemaOptions<
+  ReplacerEntryRecord,
   ReplacerEntry
 > = {
   schema: {
