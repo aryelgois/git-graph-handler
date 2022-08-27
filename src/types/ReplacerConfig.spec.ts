@@ -10,7 +10,7 @@ describe('replacerConfigRecordJTD', () => {
     const { parse } = replacerConfigRecordJTD
 
     it('throws when the array is empty', () => {
-      expect(() => parse([])).toThrowError(/entries$/u)
+      expect(() => parse([])).toThrowError(/Missing.+entries$/u)
     })
 
     it('throws when an entry is invalid', () => {
