@@ -1,8 +1,10 @@
+import { ReplacerQuery } from '~/types'
+
 import { mockThrowOnce } from '~/utils/jest'
 
 import { encodedReplacerQueryRecord, replacerQueryRecord } from '~/validation'
 
-import { parseQuery } from '.'
+import { applyReplacer, parseQuery } from '.'
 
 jest.mock('~/validation')
 const mockedEncodedReplacer = jest.mocked(encodedReplacerQueryRecord)
@@ -85,5 +87,32 @@ describe('parseQuery()', () => {
     expect(mockedReplacer.assert).toBeCalledTimes(1)
     expect(mockedReplacer.parse).toBeCalledWith(decoded)
     /* eslint-enable no-magic-numbers */
+  })
+})
+
+describe('applyReplacer()', () => {
+  const makeQuery = (input: string): ReplacerQuery => ({
+    input,
+    config: [
+      { pattern: /!(\d+)/u, replacement: 'https://example/issues/$1' },
+      { pattern: /foo\/([\w-]+)/u, replacement: 'https://foo.page/$1' },
+      { pattern: /^exactly-\d+$/u, replacement: '[$&][]' },
+    ],
+  })
+
+  it('throws when the input did not match', () => {
+    const message = 'Could not match'
+    expect(() => applyReplacer(makeQuery('foo'))).toThrow(message)
+    expect(() => applyReplacer(makeQuery('not-exactly-1'))).toThrow(message)
+  })
+
+  it('returns the replaced match', () => {
+    expect(applyReplacer(makeQuery('!42'))).toBe('https://example/issues/42')
+    expect(applyReplacer(makeQuery('foo/bar'))).toBe('https://foo.page/bar')
+    expect(applyReplacer(makeQuery('exactly-100'))).toBe('[exactly-100][]')
+
+    expect(applyReplacer(makeQuery('See <!123>'))).toBe(
+      'See <https://example/issues/123>'
+    )
   })
 })

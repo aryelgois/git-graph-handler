@@ -9,3 +9,13 @@ export function parseQuery(query: unknown): ReplacerQuery {
   replacerQueryRecord.assert(decoded)
   return replacerQueryRecord.parse(decoded)
 }
+
+export function applyReplacer({ input, config }: ReplacerQuery): string {
+  for (const entry of config) {
+    if (entry.pattern.test(input)) {
+      return input.replace(entry.pattern, entry.replacement)
+    }
+  }
+
+  throw new Error('Could not match input in config')
+}
