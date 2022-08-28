@@ -1,4 +1,5 @@
 import { decodeBase64 } from '~/utils'
+import { mockThrowOnce } from '~/utils/jest'
 
 import { replacerConfigRecordJTD } from './ReplacerConfig'
 
@@ -84,9 +85,7 @@ describe('replacerQueryRecordJTD', () => {
     it('throws when the config is invalid', () => {
       const message = 'from replacerConfigRecordJTD.parse()'
 
-      mockedConfigParser.mockImplementationOnce(() => {
-        throw new Error(message)
-      })
+      mockThrowOnce(mockedConfigParser, message)
 
       expect(() => parse({ q: 'q', c: [] })).toThrowError(message)
     })

@@ -1,3 +1,5 @@
+import { mockThrowOnce } from '~/utils/jest'
+
 import { replacerConfigRecordJTD } from './ReplacerConfig'
 import { replacerEntryRecordJTD } from './ReplacerEntry'
 
@@ -17,9 +19,7 @@ describe('replacerConfigRecordJTD', () => {
     it('throws when an entry is invalid', () => {
       const message = 'from replacerEntryRecordJTD.parse()'
 
-      mockedEntryParser.mockImplementationOnce(() => {
-        throw new Error(message)
-      })
+      mockThrowOnce(mockedEntryParser, message)
 
       expect(() => parse([{ in: '', to: '' }])).toThrowError(message)
     })
