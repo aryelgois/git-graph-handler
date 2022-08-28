@@ -8,4 +8,5 @@ export interface JTDSchemaOptions<J, T> {
 
 export type JTDSchemaValidaton<J, T> = JTDSchemaOptions<J, T> & {
   validate: ValidateFunction<J>
+  assert: (data: unknown) => asserts data is J
 }
