@@ -52,12 +52,12 @@ export const encodedReplacerQueryRecordJTD: JTDSchemaOptions<
   },
 }
 
-interface ReplacerQueryRecord {
+export interface ReplacerQueryRecord {
   q: string
   c: ReplacerConfigRecord
 }
 
-interface ReplacerQuery {
+export interface ReplacerQuery {
   input: string
   config: ReplacerConfig
 }
