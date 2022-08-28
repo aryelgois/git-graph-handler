@@ -1,6 +1,16 @@
 import { decodeBase64 } from './decoder'
 
 describe('decodeBase64()', () => {
+  it('returns an empty string when the input is invalid', () => {
+    const samples: string[] = ['', '!@#$%&*-', '[{""}]']
+
+    expect.assertions(samples.length)
+
+    for (const input of samples) {
+      expect(decodeBase64(input)).toBe('')
+    }
+  })
+
   it('decodes correctly', () => {
     const samples: [input: string, output: string][] = [
       ['Zm9v', 'foo'],
