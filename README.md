@@ -81,6 +81,7 @@ http://localhost:5000/?q=$1&c=CONFIG
 It is possible to store the configuration in a file in the repository
 and share with your team, but they will have to
 [reset the repository configuration](https://github.com/mhutchie/vscode-git-graph/issues/599)
+to load it. This file is more useful for newcomers to your repository.
 
 `.vscode/vscode-git-graph.json`
 
@@ -93,9 +94,16 @@ and share with your team, but they will have to
 }
 ```
 
-NOTE: You should use Export Repository Configuration button to generate this file.
+NOTE: You should use the Export Repository Configuration button to generate this file.
 It will only be used when first loading the repository in the Git Graph, so
 changes will not be automatically synchronized with the actual settings.
+
+It could be a good idea if everyone in your team did export the configuration,
+at least to avoid losing it during the reset, and try to merge common settings
+into the versioned file.
+
+Or just tell them to configure their local Issue Linking with what is in this file..
+just remember to unescape backslashes from the JSON file.
 
 ## License
 
