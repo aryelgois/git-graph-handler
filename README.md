@@ -78,6 +78,25 @@ numeric placeholders (`$1`, `$2`, ...) and the encoded Replacer config.
 http://localhost:5000/?q=$1&c=CONFIG
 ```
 
+It is possible to store the configuration in a file in the repository
+and share with your team, but they will have to
+[reset the repository configuration](https://github.com/mhutchie/vscode-git-graph/issues/599)
+
+`.vscode/vscode-git-graph.json`
+
+```json
+{
+  "issueLinkingConfig": {
+    "issue": "Issue Regex",
+    "url": "Issue URL"
+  }
+}
+```
+
+NOTE: You should use Export Repository Configuration button to generate this file.
+It will only be used when first loading the repository in the Git Graph, so
+changes will not be automatically synchronized with the actual settings.
+
 ## License
 
 [MIT License](LICENSE)
