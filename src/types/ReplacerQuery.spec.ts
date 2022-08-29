@@ -19,12 +19,12 @@ describe('encodedReplacerQueryRecordJTD', () => {
     const { parse } = encodedReplacerQueryRecordJTD
 
     it('throws when "q" is empty', () => {
-      expect(() => parse({ q: '', c: '' })).toThrowError(/Missing "q"/u)
+      expect(() => parse({ q: '', c: '' })).toThrowError(/Missing 'q'/u)
       expect(mockedBase64Decoder).not.toBeCalled()
     })
 
     it('throws when "c" is empty', () => {
-      expect(() => parse({ q: 'x', c: '' })).toThrowError(/Missing "c"/u)
+      expect(() => parse({ q: 'x', c: '' })).toThrowError(/Missing 'c'/u)
       expect(mockedBase64Decoder).not.toBeCalled()
     })
 

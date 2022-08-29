@@ -14,5 +14,5 @@ export function asError(e: unknown): Error {
   } else if (typeof e === 'string') {
     return new Error(e)
   }
-  return new Error(`Unknown error: "${e}"`)
+  return new Error(`Unknown error: '${e}'`)
 }

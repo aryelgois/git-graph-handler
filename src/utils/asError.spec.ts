@@ -18,7 +18,7 @@ describe('asError()', () => {
   })
 
   it('creates a fallback Error', () => {
-    const fallback = /^Unknown error: ".*"$/u
+    const fallback = /^Unknown error: '.*'$/u
 
     const run = (o: unknown) => () => {
       throw asError(o)

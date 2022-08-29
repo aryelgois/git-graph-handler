@@ -15,11 +15,11 @@ describe('replacerEntryRecordJTD', () => {
     }
 
     it('throws when "in" is empty', () => {
-      expect(() => parse({ in: '', to: '' })).toThrowError(/Missing "in"/u)
+      expect(() => parse({ in: '', to: '' })).toThrowError(/Missing 'in'/u)
     })
 
     it('throws when "to" is empty', () => {
-      expect(() => parse({ in: 'x', to: '' })).toThrowError(/Missing "to"/u)
+      expect(() => parse({ in: 'x', to: '' })).toThrowError(/Missing 'to'/u)
     })
 
     it('throws when "in" is an invalid regex', () => {

@@ -24,8 +24,8 @@ export const replacerEntryRecordJTD: JTDSchemaOptions<
   },
 
   parse(data) {
-    assert(data.in !== '', 'Missing "in" property')
-    assert(data.to !== '', 'Missing "to" property')
+    assert(data.in !== '', "Missing 'in' property")
+    assert(data.to !== '', "Missing 'to' property")
 
     return {
       pattern: new RegExp(data.in, 'u'),

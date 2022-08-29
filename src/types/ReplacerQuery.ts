@@ -32,8 +32,8 @@ export const encodedReplacerQueryRecordJTD: JTDSchemaOptions<
   },
 
   parse(data) {
-    assert(data.q !== '', 'Missing "q" property')
-    assert(data.c !== '', 'Missing "c" property')
+    assert(data.q !== '', "Missing 'q' property")
+    assert(data.c !== '', "Missing 'c' property")
 
     let config
     try {
@@ -41,7 +41,7 @@ export const encodedReplacerQueryRecordJTD: JTDSchemaOptions<
       assert(Array.isArray(config))
     } catch (_) {
       throw new SyntaxError(
-        'The "c" property must be a JSON array encoded in Base64'
+        "The 'c' property must be a JSON array encoded in Base64"
       )
     }
 
