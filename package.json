@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "fmt": "prettier --write src",
+    "fmt:check": "prettier --check src",
     "lint": "eslint src",
     "check": "tsc --noEmit",
     "test": "jest",
