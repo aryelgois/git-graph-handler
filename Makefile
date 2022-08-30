@@ -29,8 +29,8 @@ index_src := README.md
 index_out := $(public_dir)/index.html
 
 api_src_files := tsconfig.json $(shell find src -name '*.ts' -not -name '*.spec.*')
-api_entry_src := src/app.ts
-api_entry_out := dist/app.js
+api_entry_src := src/serverless.ts
+api_entry_out := dist/serverless.js
 api_out := $(api_dir)/index.js
 
 # }}}
