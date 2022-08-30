@@ -68,6 +68,7 @@ $(api_entry_out): $(api_src_files)
 .PHONY: clean
 clean:
 	-rm -r dist $(api_dir) $(public_dir)
+	-git checkout -- $(api_out)
 
 .PHONY: tests
 tests:
