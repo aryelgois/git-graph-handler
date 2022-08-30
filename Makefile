@@ -7,7 +7,7 @@ INSTALL_DIR := $(INSTALL) -d
 
 MD2HTML := npx marked
 
-TSC := npx tsup
+TSUP := npx tsup
 
 # }}}
 
@@ -30,7 +30,7 @@ index_out := $(public_dir)/index.html
 
 api_src_files := tsconfig.json $(shell find src -name '*.ts' -not -name '*.spec.*')
 api_entry_src := src/serverless.ts
-api_entry_out := dist/serverless.js
+api_entry_out := dist/serverless.mjs
 api_out := $(api_dir)/index.js
 
 # }}}
@@ -59,7 +59,7 @@ $(api_out): $(api_entry_out)
 	cp $< $@
 
 $(api_entry_out): $(api_src_files)
-	$(TSC) $(api_entry_src)
+	$(TSUP) --format esm $(api_entry_src)
 
 # }}}
 
