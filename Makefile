@@ -69,6 +69,13 @@ $(api_entry_out): $(api_src_files)
 clean:
 	-rm -r dist $(api_dir) $(public_dir)
 
+.PHONY: tests
+tests:
+	npm run fmt:check
+	npm run lint
+	npm run check
+	npm test
+
 # }}}
 
 # vim: fdm=marker
