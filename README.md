@@ -1,5 +1,8 @@
 # Git Graph Handler
 
+[![View on GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/aryelgois/git-graph-handler)
+[![Vercel instance](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://git-graph-handler.vercel.app/api)
+
 Handle multiple issue linking in the
 [Git Graph](https://github.com/mhutchie/vscode-git-graph) extension for vscode
 while these issues are not solved:
