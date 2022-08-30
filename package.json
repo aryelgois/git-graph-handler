@@ -12,6 +12,7 @@
     "test": "jest",
     "dev": "install -d dist && npm run build -- --watch & npm start -- -C",
     "build": "tsup src/index.ts",
+    "vercel-build": "make vercel",
     "start": "nodemon --watch dist dist/index.js"
   },
   "dependencies": {
