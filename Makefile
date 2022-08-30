@@ -15,24 +15,23 @@ TSC := npx tsup
 
 repository := https://github.com/aryelgois/git-graph-handler
 
-out_dir := public
-api_out_dir := $(out_dir)/api
-out_dirs := $(out_dir) $(api_out_dir)
+public_dir := public
+api_dir := api
+out_dirs := $(public_dir) $(api_dir)
 
 assets_dir := src/assets
-assets_src := $(assets_dir)/styles.css
-assets_out := $(out_dir)/styles.css
+assets_out := $(public_dir)/styles.css
 
 index_tmpl := $(assets_dir)/index.html
 body_marker := <!-- BODY -->
 
 index_src := README.md
-index_out := $(out_dir)/index.html
+index_out := $(public_dir)/index.html
 
 api_src_files := tsconfig.json $(shell find src -name '*.ts' -not -name '*.spec.*')
 api_entry_src := src/app.ts
 api_entry_out := dist/app.js
-api_out := $(api_out_dir)/index.js
+api_out := $(api_dir)/index.js
 
 # }}}
 
@@ -47,7 +46,7 @@ vercel: $(out_dirs) $(assets_out) $(index_out) $(api_out)
 $(out_dirs):
 	$(INSTALL_DIR) $@
 
-$(out_dir)/%: $(assets_dir)/%
+$(public_dir)/%: $(assets_dir)/%
 	cp $< $@
 
 $(index_out): $(index_src) $(index_tmpl)
@@ -68,7 +67,7 @@ $(api_entry_out): $(api_src_files)
 
 .PHONY: clean
 clean:
-	-rm -r dist $(out_dir)
+	-rm -r dist $(api_dir) $(public_dir)
 
 # }}}
 
