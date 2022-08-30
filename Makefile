@@ -58,6 +58,7 @@ $(index_out): $(index_src) $(index_tmpl)
 $(api_out): $(api_entry_out)
 	sed -e '/var replaceFromQuery/ s/^.*$$/export default function handler(req, res) {/' \
 		-e '/^export {/ {s/^.*//; q}' \
+		-e 's/;//' \
 		$< > $@
 
 $(api_entry_out): $(api_src_files)
