@@ -79,11 +79,15 @@ You will have to configure the `Issue Regex` to match all possibly values
 that will be handled in the Replacer config to redirect to different URLs.
 
 The `Issue URL` needs to be the URL for an instance of this package
-(default is http://localhost:5000/) with a query string containing
-numeric placeholders (`$1`, `$2`, ...) and the encoded Replacer config.
+with a query string containing numeric placeholders (`$1`, `$2`, ...)
+and the encoded Replacer config, for example:
 
 ```
+# running locally with default port:
 http://localhost:5000/?q=$1&c=CONFIG
+
+# using the public Vercel instance:
+https://git-graph-handler.vercel.app/api/?q=$1&c=CONFIG
 ```
 
 It is possible to store the configuration in a file in the repository
