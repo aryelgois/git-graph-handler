@@ -6,3 +6,11 @@ export function mockThrowOnce(
     throw new Error(message)
   })
 }
+
+export function expectMaybeCall(mockInstance: jest.Mock, negate: boolean) {
+  if (negate) {
+    expect(mockInstance).not.toBeCalled()
+  } else {
+    expect(mockInstance).toBeCalled()
+  }
+}

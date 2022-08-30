@@ -1,6 +1,6 @@
 import { ReplacerQuery } from '~/types'
 
-import { mockThrowOnce } from '~/utils/jest'
+import { expectMaybeCall, mockThrowOnce } from '~/utils/jest'
 
 import { encodedReplacerQueryRecord, replacerQueryRecord } from '~/validation'
 
@@ -30,14 +30,6 @@ describe('parseQuery()', () => {
     ReplacerParse,
   }
 
-  const expectCall = (mockInstance: jest.Mock, negate: boolean) => {
-    if (negate) {
-      expect(mockInstance).not.toBeCalled()
-    } else {
-      expect(mockInstance).toBeCalled()
-    }
-  }
-
   const testMockThrows = (mockInstance: jest.Mock, level: callLevel) => () => {
     const message = `from level #${level}`
     mockThrowOnce(mockInstance, message)
@@ -47,9 +39,9 @@ describe('parseQuery()', () => {
 
     expect(() => parseQuery({})).toThrow(message)
     expect(mockedEncodedReplacer.assert).toBeCalled()
-    expectCall(mockedEncodedReplacer.parse, level < callLevel.EncodedParse)
-    expectCall(mockedReplacer.assert, level < callLevel.ReplacerAssert)
-    expectCall(mockedReplacer.parse, level < callLevel.ReplacerParse)
+    expectMaybeCall(mockedEncodedReplacer.parse, level < callLevel.EncodedParse)
+    expectMaybeCall(mockedReplacer.assert, level < callLevel.ReplacerAssert)
+    expectMaybeCall(mockedReplacer.parse, level < callLevel.ReplacerParse)
   }
 
   it(
