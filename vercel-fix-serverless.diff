@@ -1,0 +1,20 @@
+--- api/index.build.js
++++ api/index.js
+@@ -142,7 +142,7 @@
+ }
+
+ // src/routes/replaceFromQuery.ts
+-var replaceFromQuery = (req, res) => {
++export default function handler(req, res) {
+   try {
+     const query = parseQuery(req.query);
+     const result = applyReplacer(query);
+@@ -154,7 +154,4 @@
+       message: error.message
+     });
+   }
+-};
+-export {
+-  replaceFromQuery as default
+-};
++}

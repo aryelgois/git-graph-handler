@@ -57,6 +57,7 @@ $(index_out): $(index_src) $(index_tmpl)
 
 $(api_out): $(api_entry_out)
 	cp $< $@
+	patch $(api_out) < vercel-fix-serverless.diff
 
 $(api_entry_out): $(api_src_files)
 	$(TSUP) --format esm $(api_entry_src)

@@ -1,3 +1,1 @@
-import { replaceFromQuery } from '~/routes/replaceFromQuery'
-
-export default replaceFromQuery
+export { replaceFromQuery as default } from '~/routes/replaceFromQuery'
