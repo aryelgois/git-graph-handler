@@ -27,6 +27,11 @@ npm start
 
 Note that the [dependencies](package.json) must be installed.
 
+## Vercel
+
+You can use a public instance of this handler at
+<https://git-graph-handler.vercel.app/api>
+
 ## Usage
 
 Make a request with the following parameters in the query string:
