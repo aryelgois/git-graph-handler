@@ -1,2 +1,8 @@
-dist
 node_modules
+
+# tsup
+dist
+
+# vercel
+/api
+/public
