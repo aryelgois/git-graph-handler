@@ -11,6 +11,7 @@
     "check": "tsc --noEmit",
     "test": "jest",
     "dev": "install -d dist && npm run build -- --watch & npm start -- -C",
+    "dev:public": "(echo README.md; find src/assets) | entr make dev-public & npx http-server public -c-1 -o",
     "build": "tsup src/index.ts",
     "vercel-build": "make vercel",
     "start": "nodemon --watch dist dist/index.js"

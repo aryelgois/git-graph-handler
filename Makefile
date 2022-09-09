@@ -38,6 +38,9 @@ api_out := $(api_dir)/index.js
 .PHONY: default
 default: vercel
 
+.PHONY: dev-public
+dev-public: $(public_dir) $(assets_out) $(index_out)
+
 # Files to deploy at Vercel # {{{
 
 .PHONY: vercel
