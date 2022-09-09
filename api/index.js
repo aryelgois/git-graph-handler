@@ -2,5 +2,5 @@
 // It is replaced by `make`
 
 export default function handler(req, res) {
-  response.status(200).send('It works')
+  res.status(200).send('It works')
 }
