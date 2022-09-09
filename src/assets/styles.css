@@ -51,6 +51,13 @@ pre > code {
   body {
     max-width: 80%; /* 40/50 */
   }
+
+  pre {
+    box-sizing: content-box;
+    margin-left: -1rem;
+    padding: 1rem;
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 66.666rem) {
