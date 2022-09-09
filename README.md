@@ -117,6 +117,101 @@ into the versioned file.
 Or just tell them to configure their local Issue Linking with what is in this file..
 just remember to unescape backslashes from the JSON file.
 
+### Examples
+
+#### Jira issues + GitLab merge requests
+
+Having the Issue Regex `(XYZ-\d+|[\w-]+/[\w-]+!\d+|!\d+)`, that matches:
+
+- a Jira issue `XYZ-456`,
+- a "full" GitLab merge request `org/repo!123`, or
+- a merge request for the current repo `!789`
+
+and a Replacer config like:
+
+```json
+[
+  {
+    "in": "XYZ-\\d+",
+    "to": "https://YOUR_ACCOUNT.atlassian.net/browse/$&"
+  },
+  {
+    "in": "([\\w-]+/[\\w-]+)!(\\d+)",
+    "to": "https://gitlab.com/$1/-/merge_requests/$2"
+  },
+  {
+    "in": "^!(\\d+)",
+    "to": "https://gitlab.com/YOUR_ORG/SOME_REPO/-/merge_requests/$1"
+  }
+]
+```
+
+that minified (optional) and converted to Base64 would be
+
+```
+W3siaW4iOiJYWVotXFxkKyIsInRvIjoiaHR0cHM6Ly9ZT1VSX0FDQ09VTlQuYXRsYXNzaWFuLm5l
+dC9icm93c2UvJCYifSx7ImluIjoiKFtcXHctXSsvW1xcdy1dKykhKFxcZCspIiwidG8iOiJodHRw
+czovL2dpdGxhYi5jb20vJDEvLS9tZXJnZV9yZXF1ZXN0cy8kMiJ9LHsiaW4iOiJeIShcXGQrKSIs
+InRvIjoiaHR0cHM6Ly9naXRsYWIuY29tL1lPVVJfT1JHL1NPTUVfUkVQTy8tL21lcmdlX3JlcXVl
+c3RzLyQxIn1dCg==
+```
+
+using it in the Issue URL:
+
+```
+http://localhost:5000/?q=$1&c=W3siaW4iOiJYWVotXFxkKyIsInRvIjoiaHR0cHM6Ly9ZT1VSX0FDQ09VTlQuYXRsYXNzaWFuLm5ldC9icm93c2UvJCYifSx7ImluIjoiKFtcXHctXSsvW1xcdy1dKykhKFxcZCspIiwidG8iOiJodHRwczovL2dpdGxhYi5jb20vJDEvLS9tZXJnZV9yZXF1ZXN0cy8kMiJ9LHsiaW4iOiJeIShcXGQrKSIsInRvIjoiaHR0cHM6Ly9naXRsYWIuY29tL1lPVVJfT1JHL1NPTUVfUkVQTy8tL21lcmdlX3JlcXVlc3RzLyQxIn1dCg==
+```
+
+then Git Graph would replace the `$1` with matches from your commit messages,
+and clicking the link would take you to your local instance of this package,
+that would replace again and redirect to the final URL.
+
+Remember that the Issue Linking is per repository, so it's fine to hardcode the
+current repository, but you would need multiple Replacer configs if you have
+a vscode workspace with multiple repositories.
+
+#### GitHub
+
+There is a problem with using the `#` character for GitHub issues, because it is
+not encoded properly when Git Graph replaces it into the Issue URL and is confused
+with the marker for a URI fragment.. so we must avoid sending the `#` character.
+
+Issue Regex: `(XYZ-\d+)|([\w-]+/[\w-]+)#(\d+)|#(\d+)`
+
+- four capturing groups: `$1` is for Jira, `$2` and `$3` are for an external
+  GitHub repository and `$4` is the current repository. It avoids the `#`
+  inside the captured group
+
+Issue URL: `?q=$1:$2!$3:$4`
+
+- because Git Graph replaces `undefined` in the placeholders without a match,
+  it is necessary to add a separator to help with the Replacer config.
+  If the missing placeholders were replaced to nothing, it could be `$1$2!$3$4`
+  and the config could be like the GitLab example, just changing the URLs ;)
+
+Replacer config:
+
+```json
+[
+  {
+    "in": "^(XYZ-\\d+):.+",
+    "to": "https://YOUR_ACCOUNT.atlassian.net/browse/$1"
+  },
+  {
+    "in": ".+:([\\w-]+/[\\w-]+)!(\\d+):.+",
+    "to": "https://github.com/$1/issues/$2"
+  },
+  {
+    "in": ".+:(\\d+)$",
+    "to": "https://github.com/USERNAME/SOME_REPO/issues/$1"
+  }
+]
+```
+
+It is using `.+` to match anything at the sides, because the `in` match in the
+`q` string is replaced to the `to` replacement, and we want to discard the extra
+characters.
+
 ## License
 
 [MIT License](LICENSE)
