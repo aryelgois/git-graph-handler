@@ -31,7 +31,8 @@ code {
   border-radius: 3px;
   padding: 0.1rem 0.2rem;
   vertical-align: middle;
-  background: #dee0e0;
+  background: #e7e9e9;
+  color: #222;
 }
 
 pre > code {
