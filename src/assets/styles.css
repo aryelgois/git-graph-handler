@@ -23,6 +23,13 @@ pre {
   overflow: auto;
 }
 
+code {
+  border-radius: 3px;
+  padding: 0.1rem 0.2rem;
+  vertical-align: middle;
+  background: #dee0e0;
+}
+
 @media only screen and (min-width: 40rem) {
   body {
     margin: 0 auto;
