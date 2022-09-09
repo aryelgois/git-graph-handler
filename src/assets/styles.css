@@ -21,6 +21,10 @@ body {
 
 pre {
   overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.5rem;
+  background: #f5f6f8;
 }
 
 code {
@@ -28,6 +32,12 @@ code {
   padding: 0.1rem 0.2rem;
   vertical-align: middle;
   background: #dee0e0;
+}
+
+pre > code {
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
 }
 
 @media only screen and (min-width: 40rem) {
