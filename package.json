@@ -1,6 +1,6 @@
 {
   "name": "git-graph-handler",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Handle multiple issue linking from Git Graph extension for vscode",
   "author": "Aryel Mota Gois",
   "license": "MIT",
