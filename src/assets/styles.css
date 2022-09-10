@@ -55,6 +55,10 @@ code {
   color: #222;
 }
 
+a code {
+  color: inherit;
+}
+
 pre > code {
   border-radius: 0;
   padding: 0;
