@@ -19,6 +19,12 @@ body {
   line-height: 1.333;
 }
 
+h1,
+h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
 pre {
   overflow: auto;
   border: 1px solid #ddd;
