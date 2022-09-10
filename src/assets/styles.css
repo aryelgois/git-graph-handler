@@ -73,6 +73,17 @@ pre > code {
     max-width: 80%; /* 40/50 */
   }
 
+  .heading a {
+    position: relative;
+  }
+
+  .heading a::before {
+    position: absolute;
+    left: -1em;
+    margin: 0;
+    padding: 0.25em;
+  }
+
   pre {
     box-sizing: content-box;
     margin-left: -1rem;
