@@ -55,6 +55,7 @@ $(public_dir)/%: $(assets_dir)/%
 $(index_out): $(index_src) $(index_tmpl)
 	$(MD2HTML) -i $< \
 		| sed -e 's#href="\([^:"]\+\)"#href="$(repository)/blob/main/\1"#' \
+		      -e 's:id="\([^"]\+\)">\([^<]\+\)<:id="\1" class="heading"><a href="#\1">\2</a><:' \
 		| sed -e '/$(body_marker)/r /dev/stdin' $(index_tmpl) \
 		> $@
 

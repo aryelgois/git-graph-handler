@@ -25,6 +25,20 @@ h2 {
   padding-bottom: 0.25rem;
 }
 
+.heading a {
+  color: #222;
+  text-decoration: none;
+}
+
+.heading a::before {
+  content: '#';
+  position: relative;
+  top: -0.125em;
+  margin-right: 0.25em;
+  color: #969790;
+  font-size: 0.75em;
+}
+
 pre {
   overflow: auto;
   border: 1px solid #ddd;
