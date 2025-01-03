@@ -5,7 +5,7 @@ SHELL = /bin/sh
 INSTALL := install
 INSTALL_DIR := $(INSTALL) -d
 
-MD2HTML := npx marked
+MD2HTML := ./marked.mjs
 
 TSUP := npx tsup
 
