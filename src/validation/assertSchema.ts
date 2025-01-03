@@ -5,7 +5,7 @@ import Ajv, { ValidateFunction } from 'ajv/dist/jtd'
 export const createSchemaAsserter = (ajv: Ajv) =>
   function assertSchema<J>(
     this: { validate: ValidateFunction<J> },
-    data: unknown
+    data: unknown,
   ): asserts data is J {
     if (!this.validate(data)) {
       const errors = this.validate.errors ?? []

@@ -1,6 +1,6 @@
 export function mockThrowOnce(
   mockInstance: { mockImplementationOnce: (fn: () => never) => void },
-  message: string
+  message: string,
 ) {
   mockInstance.mockImplementationOnce(() => {
     throw new Error(message)

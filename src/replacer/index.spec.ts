@@ -46,22 +46,22 @@ describe('parseQuery()', () => {
 
   it(
     'throws when encodedReplacerQueryRecord.assert() fails',
-    testMockThrows(mockedEncodedReplacer.assert, callLevel.EncodedAssert)
+    testMockThrows(mockedEncodedReplacer.assert, callLevel.EncodedAssert),
   )
 
   it(
     'throws when encodedReplacerQueryRecord.parse() fails',
-    testMockThrows(mockedEncodedReplacer.parse, callLevel.EncodedParse)
+    testMockThrows(mockedEncodedReplacer.parse, callLevel.EncodedParse),
   )
 
   it(
     'throws when replacerQueryRecord.assert() fails',
-    testMockThrows(mockedReplacer.assert, callLevel.ReplacerAssert)
+    testMockThrows(mockedReplacer.assert, callLevel.ReplacerAssert),
   )
 
   it(
     'throws when replacerQueryRecord.parse() fails',
-    testMockThrows(mockedReplacer.parse, callLevel.ReplacerParse)
+    testMockThrows(mockedReplacer.parse, callLevel.ReplacerParse),
   )
 
   it('creates a ReplacerQuery', () => {
@@ -104,7 +104,7 @@ describe('applyReplacer()', () => {
     expect(applyReplacer(makeQuery('exactly-100'))).toBe('[exactly-100][]')
 
     expect(applyReplacer(makeQuery('See <!123>'))).toBe(
-      'See <https://example/issues/123>'
+      'See <https://example/issues/123>',
     )
   })
 })

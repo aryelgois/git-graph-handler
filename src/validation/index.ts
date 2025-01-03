@@ -14,7 +14,7 @@ const ajv = new Ajv()
 const assertSchema = createSchemaAsserter(ajv)
 
 const compile = <J, T>(
-  options: JTDSchemaOptions<J, T>
+  options: JTDSchemaOptions<J, T>,
 ): JTDSchemaValidaton<J, T> => ({
   ...options,
   validate: ajv.compile(options.schema),

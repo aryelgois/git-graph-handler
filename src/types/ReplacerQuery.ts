@@ -41,7 +41,7 @@ export const encodedReplacerQueryRecordJTD: JTDSchemaOptions<
       assert(Array.isArray(config))
     } catch (_) {
       throw new SyntaxError(
-        "The 'c' property must be a JSON array encoded in Base64"
+        "The 'c' property must be a JSON array encoded in Base64",
       )
     }
 

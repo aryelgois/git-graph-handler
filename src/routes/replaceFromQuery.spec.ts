@@ -30,7 +30,7 @@ describe('replaceFromQuery()', () => {
     replaceFromQuery(
       { query } as any,
       { redirect: mockedResponseRedirect, status: mockedResponseStatus } as any,
-      mockedNextFn
+      mockedNextFn,
     )
   /* eslint-enable @typescript-eslint/no-explicit-any */
 

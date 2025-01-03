@@ -44,7 +44,7 @@ describe('replacerEntryRecordJTD', () => {
       run(
         '(?<first>\\w+)\\s(?<second>\\w+)',
         /(?<first>\w+)\s(?<second>\w+)/u,
-        '$2 $1'
+        '$2 $1',
       )
     })
   })
