@@ -39,6 +39,7 @@ export const encodedReplacerQueryRecordJTD: JTDSchemaOptions<
     try {
       config = JSON.parse(decodeBase64(data.c))
       assert(Array.isArray(config))
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_) {
       throw new SyntaxError(
         "The 'c' property must be a JSON array encoded in Base64",
